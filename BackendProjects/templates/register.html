@@ -1,0 +1,46 @@
+<html>
+    <title></title>
+    <head><h1>Register Here!<hr></h1></head>
+    <style>
+        #container{
+            display:flex;
+            flex-direction:column;
+        }
+        input{
+            width:30%;
+        }
+        .error{
+                border-radius: 12px;
+                width:20%;
+                height:10%;
+                background-color:red;
+                color:white;
+                position:fixed;
+                left:70%;
+                justify-content:center;
+                align-content: center;
+                /* justify-self:center; */
+            }
+    </style> 
+    <body>
+        {% with message = get_flashed_messages(with_categories = true) %}
+            {% if message %}
+                {% for category, msg in message %}
+                    <div class="{{ category }}">
+                        {{msg}}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form action="/register" method="post"> <!--i fixed this-->
+            <div id="container">
+                <input type="text" name="username" placeholder="Username" required><br>
+                <input type="Email" name="email" placeholder="Email" required><br>
+                <input type="password" name="password" placeholder="Password" required><br>
+                <!-- <input type="password" placeholder="Verify Password" name="password2" required><br> -->
+                <input type="submit" value="Regiser">
+            </div>
+
+        </form>
+    </body> 
+</html>

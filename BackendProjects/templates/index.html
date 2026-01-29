@@ -1,0 +1,92 @@
+<html>
+    <head></head>
+    <body>
+        {% with message = get_flashed_messages(with_categories=true) %}
+            {% if message %}
+                {% for category, msg in message %}
+                    <div class="{{category}}"><p>{{ msg }}</p> </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <style>
+            .error{
+                border-radius: 12px;
+                width:20%;
+                height:10%;
+                background-color:red;
+                color:white;
+                position:fixed;
+                left:70%;
+                justify-content:center;
+                align-content: center;
+                /* justify-self:center; */
+            }
+            body{
+                display:flex;
+                justify-content:center;
+            }
+            #container{
+                margin-right:70px;
+                border:1px solid green;
+                height:500px;
+                width:400px;
+                border-radius:25px;
+            }
+            #heading{
+                display:flex;
+                border:1px solid red;
+                width:100%;
+                height:20%;
+                align-items:center;
+                justify-content:center;
+            }
+            #mainbody{
+                display:flex;
+                border:1px solid black;
+                height:80%;
+                flex-direction:column;
+            }
+            #email{
+                outline:none;
+                border:none;
+                border-bottom-style:solid;
+                width:50%;
+                margin-bottom:10px;
+            }
+            #password{
+                outline:none;
+                border:none;
+                border-bottom:solid;
+                width:50%;
+            }
+            #submit{
+                margin-top:20px;
+                width:40%;
+            }
+            
+        </style>
+        <form action="/" method="post">  <!--maybe i should fix here an put action="/home" method="post"-->
+
+            <div id="container">
+                <div id="heading"><h2>Login</h2></div>
+                <div id="mainbody">
+                    Email: <br>
+                    <input id="email" class="input" name="email" type="email" required placeholder="example@gmail.com"><br>
+                    Password: <br>
+                    <input type="password" name="password" class="input" required placeholder="Password" id="password">
+                    <br>
+                    <input type="submit" id="submit" value="Login"><br>
+                    Dont have an account? <a href="register">Register here</a>
+                </div>
+            </div>
+
+        </form>
+
+    </body>
+    <script>
+        setTimeout(function(){
+            let flashes = document.querrySelectorAll(".error, .success");
+            flashes.forEach(f=>f.style.display= "none");
+        }, 3000);
+    </script>
+</html>
